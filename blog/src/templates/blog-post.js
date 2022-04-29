@@ -42,6 +42,8 @@ const BlogPostTemplate = ({ data}) => {
 
 export default BlogPostTemplate
 
+
+//Add hero image here
 export const pageQuery = graphql`
   query blogPostQuery($slug: String!) {
     contentfulBlogPost(slug: {eq: $slug}) {
