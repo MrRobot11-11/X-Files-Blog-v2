@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+
 
 
 
@@ -25,6 +25,8 @@ const BlogPostTemplate = ({ data}) => {
           <p>{data.contentfulBlogPost.frontmatter}</p>
          
         </header>
+
+        <div dangerouslySetInnerHTML={{__html: data.allContentfulVideoEmbed.nodes[0].markdownContent.childMarkdownRemark.html}}></div>
         
         <section
           dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}}
@@ -43,17 +45,27 @@ const BlogPostTemplate = ({ data}) => {
 export default BlogPostTemplate
 
 
-//Add hero image here
+
 export const pageQuery = graphql`
-  query blogPostQuery($slug: String!) {
-    contentfulBlogPost(slug: {eq: $slug}) {
-      title
-      slug
-      body {
+query blogPostQuery($slug: String!) {
+  contentfulBlogPost(slug: {eq: $slug}) {
+    title
+    slug
+    body {
+      childMarkdownRemark {
+        html
+      }
+    }
+  }
+  allContentfulVideoEmbed {
+    nodes {
+      markdownContent {
         childMarkdownRemark {
           html
         }
       }
     }
   }
+}
+
 `

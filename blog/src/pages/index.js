@@ -31,6 +31,7 @@ const BlogIndex = ({ data, location }) => {
             {edge.node.body.childMarkdownRemark.excerpt}
           </div>
         </li>
+        
       ))
     }
     </ul>
@@ -61,15 +62,11 @@ export const pageQuery = graphql`
           }
         }
         heroImage {
-          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 250)
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 200)
         }
       }
     }
   }
   
 }
-
-
-
-
 `

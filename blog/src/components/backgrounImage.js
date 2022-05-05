@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
@@ -39,4 +39,4 @@ const GbiBridged = () => {
     </BackgroundImage>
   )
 }
-export default GbiBridged
+export default GbiBridged */
