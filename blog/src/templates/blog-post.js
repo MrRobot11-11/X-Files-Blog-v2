@@ -5,10 +5,17 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 
+//Add space between elements
+const Space = styled.div`
+  display: flex;
+  padding-top: 20px;
+ 
+
+`
 
 
 const BlogPostTemplate = ({ data}) => {
- const { title, body } = data.contentfulBlogPost
+ const { title, body, video } = data.contentfulBlogPost
   
 
   return (
@@ -26,7 +33,11 @@ const BlogPostTemplate = ({ data}) => {
          
         </header>
 
-        <div dangerouslySetInnerHTML={{__html: data.allContentfulVideoEmbed.nodes[0].markdownContent.childMarkdownRemark.html}}></div>
+        <Space></Space>
+
+        <div dangerouslySetInnerHTML={{__html: video.video}}></div>
+
+        <Space></Space>
         
         <section
           dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}}
@@ -56,14 +67,8 @@ query blogPostQuery($slug: String!) {
         html
       }
     }
-  }
-  allContentfulVideoEmbed {
-    nodes {
-      markdownContent {
-        childMarkdownRemark {
-          html
-        }
-      }
+    video {
+      video
     }
   }
 }

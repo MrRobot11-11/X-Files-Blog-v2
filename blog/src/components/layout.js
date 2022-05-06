@@ -14,15 +14,17 @@ const Layout = ({ location, title, children }) => {
   const data = useStaticQuery(
     graphql`
       query {
-          desktop: file(relativePath: {eq: "xfiles-3.jpg"}) {
+  desktop: file(relativePath: {eq: "xfiles-3.jpg"}) {
     childImageSharp {
-      fluid(quality: 100, fit: INSIDE) {
+      fluid(quality: 100, fit: CONTAIN, maxWidth: 100
+
+        ) {
         ...GatsbyImageSharpFluid_withWebp
       }
-      gatsbyImageData(layout: FIXED, width: 50)
     }
   }
-      }
+}
+
     `
   )
 
@@ -51,7 +53,8 @@ const Layout = ({ location, title, children }) => {
       Tag="section"
       fluid={imageData}
       backgroundColor={`#040e18`}
-      width={100}
+      width={20}
+     
       
     >
     
