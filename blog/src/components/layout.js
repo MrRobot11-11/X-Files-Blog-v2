@@ -16,7 +16,7 @@ const Layout = ({ location, title, children }) => {
       query {
   desktop: file(relativePath: {eq: "xfiles-3.jpg"}) {
     childImageSharp {
-      fluid(quality: 100, fit: CONTAIN, maxWidth: 100
+      fluid(quality: 100, fit: COVER, maxWidth: 1200
 
         ) {
         ...GatsbyImageSharpFluid_withWebp
