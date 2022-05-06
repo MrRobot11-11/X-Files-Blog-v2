@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 
+
 //Add space between elements
 const Space = styled.div`
   display: flex;

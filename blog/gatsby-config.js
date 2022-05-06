@@ -13,19 +13,16 @@ module.exports = {
       name: `Steven Lantz`,
       company: `X-Files Blog`,
       address: `935 Pennsylvania Avenue, NW
-Washington, D.C. 20535-0001`
-    }
-    ,
-
+Washington, D.C. 20535-0001`,
+    },
     description: `Project 1 ITDEV-164`,
     siteUrl: `https://Matc.edu`,
-   
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-   
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,14 +30,15 @@ Washington, D.C. 20535-0001`
         name: `blog`,
       },
     },
+
     {
       resolve: `gatsby-source-contentful`,
-        options:{
-          spaceId: `${process.env.SPACE_ID}`,
-          accessToken: `${process.env.ACCESS_TOKEN}`
-        }
+      options: {
+        spaceId: `${process.env.SPACE_ID}`,
+        accessToken: `${process.env.ACCESS_TOKEN}`,
       },
-    
+    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -48,7 +46,7 @@ Washington, D.C. 20535-0001`
         path: `${__dirname}/src/images`,
       },
     },
-    
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -74,7 +72,7 @@ Washington, D.C. 20535-0001`
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
-    
+
     /*
    {
       resolve: `gatsby-plugin-feed`,
@@ -144,6 +142,5 @@ Washington, D.C. 20535-0001`
       },
     },
     `gatsby-plugin-react-helmet`,
-     
   ],
 }
