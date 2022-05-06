@@ -33,7 +33,7 @@ const SearchForm = ({ initialQuery = "" }) => {
         id="search-input"
         type="search"
         value={query}
-        placeholder="e.g. duck"
+        placeholder="Search"
         onChange={handleChange}
       />
       <button type="submit">Go</button>

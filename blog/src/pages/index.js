@@ -18,7 +18,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Home" />
       <Bio />
-      <SearchForm/>
+      <SearchForm />
 
      
        <ul>

@@ -1,53 +1,68 @@
-import * as React from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
-import '../style.css'
-import Bio from "../components/bio"
+import { Index } from "lunr"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { GatsbyImage } from "gatsby-plugin-image"
+import SEO from "../components/seo"
 import SearchForm from "../components/search_form"
 
-
-// We can access the results of the page GraphQL query via the data props
 const SearchPage = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata.title
-    
-    // We can read what follows the ?q= here
-    // URLSearchParams provides a native way to get URL params
-    // location.search.slice(1) gets rid of the "?" 
-    const params = new URLSearchParams(location.search.slice(1))
+  const siteTitle = data.site.siteMetadata.title
 
-const q = params.get("q") || ""
- 
-/* // LunrIndex is available via page query */
-const { store } = data.LunrIndex
-// Lunr in action here
-const index = Index.load(data.LunrIndex.index)
-let results = []
-try {
-  // Search is a lunr method
-  results = index.search(q).map(({ ref }) => {
-    // Map search results to an array of {slug, title, excerpt} objects
-    return {
-      slug: ref,
-      ...store[ref],
-    }
-  })
-} catch (error) {
-  console.log(error)
-}
-return (
-  // We will take care of this part in a moment
-)
+  // We can read what follows the ?q= here
+  // While you could install some external library
+  // (or should if you care about IE users),
+  // URLSearchParams provides a native way to get URL params
+  // location.search.slice(1) gets rid of the "?"
+  const params = new URLSearchParams(location.search.slice(1))
+  const q = params.get("q") || ""
+
+  // LunrIndex is available via page query
+  const { store } = data.LunrIndex
+  // lunr in action here
+  const index = Index.load(data.LunrIndex.index)
+  let results = []
+  try {
+    // search is a lunr method
+    results = index.search(q).map(({ ref }) => {
+      // Map search results to an array of {slug, title, excerpt} objects
+      return {
+        slug: ref,
+        ...store[ref],
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title="Search results" />
+      {q ? <h1>Search results</h1> : <h1>What are you looking for?</h1>}
+      <SearchForm initialQuery={q} />
+      {results.length ? (
+        results.map(result => {
+          return (
+            <article key={result.slug}>
+              <h2>
+                <Link to={result.slug}>{result.title || result.slug}</Link>
+              </h2>
+              <p>{result.excerpt}</p>
+            </article>
+          )
+        })
+      ) : (
+        <p>Nothing found.</p>
+      )}
+    </Layout>
+  )
 }
 export default SearchPage
 export const pageQuery = graphql`
-query {
-  site {
-    siteMetadata {
-      title
+  query {
+    site {
+      siteMetadata {
+        title
+      }
     }
+    LunrIndex
   }
-  LunrIndex
-}
 `
