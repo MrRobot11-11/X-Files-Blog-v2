@@ -8,6 +8,8 @@ module.exports = {
     author: {
       name: `Steven Lantz`,
       summary: `who is an avid X-Files fan and hoping to be a wealthy programmer one day.`,
+      published: `05/07/22`,
+      updated: `05/08/22`,
     },
     contact: {
       name: `Steven Lantz`,
@@ -44,6 +46,19 @@ Washington, D.C. 20535-0001`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+
+    {
+      resolve: `gatsby-plugin-gitalk`,
+      options: {
+        config: {
+          clientID: "8441ab538f0959fab40d",
+          clientSecret: "3fa1a903be86fa8657156ff19971f7dbe34f231c",
+          repo: "itdev164-sp2022/steve-lantz-p2",
+          owner: "MrRobot11-11",
+          admin: ["MrRobot11-11"],
+        },
       },
     },
 

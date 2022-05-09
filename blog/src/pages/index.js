@@ -1,47 +1,38 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react"
+import { Link, graphql, StaticQuery } from "gatsby"
 import '../style.css'
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { GatsbyImage } from "gatsby-plugin-image"
-import SearchForm from "../components/search_form"
 
 
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = "X-Files Blog";
   
-
-
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Home" />
       <Bio />
-      <SearchForm />
-
-     
-       <ul>
-    {
-      data.allContentfulBlogPost.edges.map(edge => (
-        <li>
-          <Link to={edge.node.slug} key={edge.node.id}>{edge.node.title}</Link>
-          <div>
-            <GatsbyImage
-              image={edge.node.heroImage.gatsbyImageData}
-              alt="test"
-            />
-          </div>
-          <div>
-            {edge.node.body.childMarkdownRemark.excerpt}
-          </div>
-        </li>
-        
-      ))
-    }
-    </ul>
+   
        
-      
+      <ul>
+        {data.allContentfulBlogPost.edges.map(edge => (
+          <li>
+            <Link to={edge.node.slug} key={edge.node.id}>
+              {edge.node.title}
+            </Link>
+            <div>
+              <GatsbyImage
+                image={edge.node.heroImage.gatsbyImageData}
+                alt="test"
+              />
+            </div>
+            <div>{edge.node.body.childMarkdownRemark.excerpt}</div>
+          </li>
+        ))}
+      </ul>
     </Layout>
   )
 }
@@ -76,6 +67,6 @@ export const pageQuery = graphql`
         }
       }
     }
-   
+  
   }
 `

@@ -1,7 +1,8 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
+
 
 const Outer = styled.header`
   background-color: #666777;
@@ -39,6 +40,9 @@ const StyledLink = styled(Link)`
 `
 //Comment
 const Header = ({ siteTitle }) => (
+  
+  
+  
   <Outer>
     <Inner>
       <H1>
@@ -53,10 +57,13 @@ const Header = ({ siteTitle }) => (
        <StyledLink to="/contact/">
         <Links>Contact</Links>
         </StyledLink>
+       
     
     </Inner>
   </Outer>
 )
+
+
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

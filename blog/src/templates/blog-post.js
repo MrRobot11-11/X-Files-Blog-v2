@@ -3,7 +3,8 @@ import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-
+import Gitalk from "gatsby-plugin-gitalk"
+import "@suziwen/gitalk/dist/gitalk.css"
 
 
 //Add space between elements
@@ -18,38 +19,34 @@ const Space = styled.div`
 const BlogPostTemplate = ({ data}) => {
  const { title, body, video } = data.contentfulBlogPost
   
-
+let gitalkConfig = {
+  id: data.contentfulBlogPost.id || data.contentfulBlogPost.frontmatter,
+  title: data.contentfulBlogPost.title
+}
   return (
     <Layout title={title}>
-      <Seo
-        title={title}
-       
+      <Seo title={title} />
+
+      <header>
+        <h1 itemProp="headline">{title}</h1>
+
+        <p>{data.contentfulBlogPost.frontmatter}</p>
+      </header>
+
+      <Space></Space>
+
+      <div dangerouslySetInnerHTML={{ __html: video.video }}></div>
+
+      <Space></Space>
+
+      <section
+        dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }}
+        itemProp="articleBody"
       />
-     
-        <header>
-           
-          <h1  itemProp="headline">{title}</h1>
-         
-          <p>{data.contentfulBlogPost.frontmatter}</p>
-         
-        </header>
 
-        <Space></Space>
+      <Gitalk options={gitalkConfig} />
 
-        <div dangerouslySetInnerHTML={{__html: video.video}}></div>
-
-        <Space></Space>
-        
-        <section
-          dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}}
-          itemProp="articleBody"
-        />
-      
-        <footer>
-          
-        </footer>
-      
-     
+      <footer></footer>
     </Layout>
   )
 }
@@ -71,6 +68,7 @@ query blogPostQuery($slug: String!) {
     video {
       video
     }
+    
   }
 }
 
