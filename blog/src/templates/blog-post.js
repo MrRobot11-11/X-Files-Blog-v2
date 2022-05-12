@@ -20,7 +20,7 @@ const BlogPostTemplate = ({ data}) => {
  const { title, body, video } = data.contentfulBlogPost
   
   useEffect(() =>{
-    commentBox("5664162512371712-proj", {
+    commentBox("5761067175116800-proj", {
       backgroundColor: null, // default transparent
       textColor: null, // default black
       subtextColor: null, // default grey
