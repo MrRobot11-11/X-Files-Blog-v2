@@ -3,8 +3,8 @@ import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Gitalk from "gatsby-plugin-gitalk"
-import "@suziwen/gitalk/dist/gitalk.css"
+import commentBox from 'commentbox.io'
+import { useEffect } from "react"
 
 
 //Add space between elements
@@ -19,10 +19,15 @@ const Space = styled.div`
 const BlogPostTemplate = ({ data}) => {
  const { title, body, video } = data.contentfulBlogPost
   
-let gitalkConfig = {
-  id: data.contentfulBlogPost.id || data.contentfulBlogPost.frontmatter,
-  title: data.contentfulBlogPost.title
-}
+  useEffect(() =>{
+    commentBox("5664162512371712-proj", {
+      backgroundColor: null, // default transparent
+      textColor: null, // default black
+      subtextColor: null, // default grey
+    })
+  }, [])
+  
+  
   return (
     <Layout title={title}>
       <Seo title={title} />
@@ -44,7 +49,8 @@ let gitalkConfig = {
         itemProp="articleBody"
       />
 
-      <Gitalk options={gitalkConfig} />
+      <div className="commentbox"/>
+     
 
       <footer></footer>
     </Layout>

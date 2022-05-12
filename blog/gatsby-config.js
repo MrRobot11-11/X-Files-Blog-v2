@@ -50,19 +50,6 @@ Washington, D.C. 20535-0001`,
     },
 
     {
-      resolve: `gatsby-plugin-gitalk`,
-      options: {
-        config: {
-          clientID: "a3871e06c0b292b6690d",
-          clientSecret: "0d8017263b196dcc2f60bd4268f5b978cbe4b230",
-          repo: "MrRobot11-11/X-Files-Blog",
-          owner: "MrRobot11-11",
-          admin: ["MrRobot11-11"],
-        },
-      },
-    },
-
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
