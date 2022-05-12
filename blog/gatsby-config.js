@@ -53,9 +53,9 @@ Washington, D.C. 20535-0001`,
       resolve: `gatsby-plugin-gitalk`,
       options: {
         config: {
-          clientID: "8441ab538f0959fab40d",
-          clientSecret: "3fa1a903be86fa8657156ff19971f7dbe34f231c",
-          repo: "itdev164-sp2022/steve-lantz-p2",
+          clientID: "a3871e06c0b292b6690d",
+          clientSecret: "0d8017263b196dcc2f60bd4268f5b978cbe4b230",
+          repo: "MrRobot11-11/X-Files-Blog",
           owner: "MrRobot11-11",
           admin: ["MrRobot11-11"],
         },
