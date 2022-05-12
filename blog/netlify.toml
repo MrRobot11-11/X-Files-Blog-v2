@@ -1,0 +1,4 @@
+[build]
+  Command = "gatsby build && gatsby build:lambda"
+  Functions = "lambda"
+  Publish = "blog/public/"

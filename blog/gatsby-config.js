@@ -1,6 +1,10 @@
+
+
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`
 });
+
+const {createProxyMiddleware} = require('http-proxy-middleware');
 
 module.exports = {
   siteMetadata: {
@@ -19,6 +23,15 @@ Washington, D.C. 20535-0001`,
     },
     description: `Project 1 ITDEV-164`,
     siteUrl: `https://Matc.edu`,
+  },
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      createProxyMiddleware({
+        target: "http://localhost:8000",
+        pathRewrite: { "/.netlify/functions/": "" },
+      })
+    )
   },
   plugins: [
     `gatsby-plugin-image`,

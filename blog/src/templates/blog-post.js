@@ -3,8 +3,9 @@ import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import commentBox from 'commentbox.io'
-import { useEffect } from "react"
+import App from "../components/app"
+
+
 
 
 //Add space between elements
@@ -19,13 +20,7 @@ const Space = styled.div`
 const BlogPostTemplate = ({ data}) => {
  const { title, body, video } = data.contentfulBlogPost
   
-  useEffect(() =>{
-    commentBox("5761067175116800-proj", {
-      backgroundColor: null, // default transparent
-      textColor: null, // default black
-      subtextColor: null, // default grey
-    })
-  }, [])
+
   
   
   return (
@@ -49,8 +44,7 @@ const BlogPostTemplate = ({ data}) => {
         itemProp="articleBody"
       />
 
-      <div className="commentbox"/>
-     
+     <App></App>
 
       <footer></footer>
     </Layout>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
-import '../style.css'
+import '../Styles/style.css'
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
