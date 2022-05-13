@@ -13,7 +13,7 @@ const postData = (url, data) => {
       "content-type": "application/json",
     },
     method: "POST",
-    //mode: 'cors' // if your endpoints are on a different domain
+    mode: 'cors' // if your endpoints are on a different domain
   }).then(response => response.json())
 }
 
