@@ -13,19 +13,19 @@ const postData = (url, data) => {
       "content-type": "application/json",
     },
     method: "POST",
-    mode: 'cors' // if your endpoints are on a different domain
+    //mode: 'cors' // if your endpoints are on a different domain
   }).then(response => response.json())
 }
 
 const contentfulClient = createClient({
   space: process.env.SPACE_ID || "my-space-id",
   accessToken: process.env.ACCESS_TOKEN || "my-access-token",
-   host: process.env.ACCESS_TOKEN,
+   host: process.env.CONTENT_MANAGEMENT,
 })
 
 const App = props => (
   <div>
-    <h3>Authless Comments Example</h3>
+    <h3>Leave a Comment!</h3>
     <div>
       <CommentBox
         subjectId={fakeBlogPostId}
