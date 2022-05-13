@@ -20,7 +20,7 @@ const postData = (url, data) => {
 const contentfulClient = createClient({
   space: process.env.SPACE_ID || "my-space-id",
   accessToken: process.env.ACCESS_TOKEN || "my-access-token",
-//   host: process.env.REACT_APP_CONTENTFUL_HOST,
+   host: process.env.ACCESS_TOKEN,
 })
 
 const App = props => (
