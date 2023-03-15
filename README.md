@@ -1,2 +1,3 @@
-# steve-lantz-p2
-Project 2
+# X-Files Blog
+
+A website demonstrating the use of a headless CMS, using gatsy, react, and graphQL
