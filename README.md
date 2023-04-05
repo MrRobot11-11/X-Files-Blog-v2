@@ -1,3 +1,4 @@
-# X-Files Blog
+# X-Files Blog v2
 
-A website demonstrating the use of a headless CMS, using gatsy, react, and graphQL
+Updated blog site adding more content and features
+A website demonstrating the use of a headless CMS, using GatsbyJS, JavaScript, GraphQL, Contentful, and Netlify.
